@@ -1,0 +1,254 @@
+
+*****************************************************
+Summary
+-------
+Generated at: 2024-05-05T20:21:04-06:00
+
+Notes: 0
+Binaries: 0
+Archives: 0
+Standards: 18
+
+Apache Licensed: 13
+Generated Documents: 0
+
+JavaDocs are generated, thus a license header is optional.
+Generated files do not require license headers.
+
+5 Unknown Licenses
+
+*****************************************************
+
+Files with unapproved licenses:
+
+  src/main/java/org/demo/Order.java
+  src/main/java/org/demo/OrdersController.java
+  src/main/java/org/demo/User.java
+  src/main/java/org/demo/UsersController.java
+  src/main/resources/struts.xml
+
+*****************************************************
+
+*****************************************************
+  Files with Apache License headers will be marked AL
+  Binary files (which do not require any license headers) will be marked B
+  Compressed archives will be marked A
+  Notices, licenses etc. will be marked N
+  AL    pom.xml
+ !????? src/main/java/org/demo/Order.java
+ !????? src/main/java/org/demo/OrdersController.java
+ !????? src/main/java/org/demo/User.java
+ !????? src/main/java/org/demo/UsersController.java
+  AL    src/main/resources/log4j2.xml
+ !????? src/main/resources/struts.xml
+  AL    src/main/resources/velocity.properties
+  AL    src/main/webapp/WEB-INF/content/orders-deleteConfirm.jsp
+  AL    src/main/webapp/WEB-INF/content/orders-edit.jsp
+  AL    src/main/webapp/WEB-INF/content/orders-editNew.jsp
+  AL    src/main/webapp/WEB-INF/content/orders-index.jsp
+  AL    src/main/webapp/WEB-INF/content/orders-show.jsp
+  AL    src/main/webapp/WEB-INF/web.xml
+  AL    src/test/java/it/org/apache/struts2/rest/example/GetOrdersTest.java
+  AL    src/test/java/it/org/apache/struts2/rest/example/ListOrdersTest.java
+  AL    src/test/java/it/org/apache/struts2/rest/example/ParameterUtils.java
+  AL    src/test/java/it/org/apache/struts2/rest/example/PostOrderTest.java
+ 
+*****************************************************
+
+ Printing headers for text files without a valid license header...
+ 
+=====================================================
+== File: src/main/java/org/demo/Order.java
+=====================================================
+package org.demo;
+
+public class Order {
+    private int id;
+    private int userId;
+    private double amount;
+
+    public Order() {
+    }
+
+    public Order(int id, int userId, double amount) {
+        this.id = id;
+        this.userId = userId;
+        this.amount = amount;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+}
+
+=====================================================
+== File: src/main/java/org/demo/OrdersController.java
+=====================================================
+package org.demo;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class OrdersController {
+    private List<Order> orders = new ArrayList<>();
+
+    public String index() {
+        // Lógica para devolver la lista de órdenes en formato JSON
+        return "success";
+    }
+
+    public String create() {
+        // Lógica para crear una nueva orden
+        return "success";
+    }
+
+    public String show() {
+        // Lógica para mostrar una orden específica en formato JSON
+        return "success";
+    }
+
+    public String update() {
+        // Lógica para actualizar una orden existente
+        return "success";
+    }
+
+    public String destroy() {
+        // Lógica para eliminar una orden existente
+        return "success";
+    }
+
+    // Otros métodos auxiliares si es necesario
+}
+
+=====================================================
+== File: src/main/java/org/demo/User.java
+=====================================================
+package org.demo;
+
+public class User {
+  private int id;
+  private String name;
+  private String email;
+
+  public User() {
+  }
+
+  public User(int id, String name, String email) {
+    this.id = id;
+    this.name = name;
+    this.email = email;
+  }
+
+  public int getId() {
+    return id;
+  }
+  public void setId(int id) {
+    this.id = id;
+  }
+  public String getName() {
+    return name;
+  }
+  public void setName(String name) {
+    this.name = name;
+  }
+  public String getEmail() {
+    return email;
+  }
+  public void setEmail(String email) {
+    this.email = email;
+  }  
+}
+
+=====================================================
+== File: src/main/java/org/demo/UsersController.java
+=====================================================
+package org.demo;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.struts2.convention.annotation.Action;
+import org.apache.struts2.convention.annotation.Result;
+
+import com.google.gson.Gson;
+import com.opensymphony.xwork2.ActionSupport;
+
+public class UsersController extends ActionSupport {
+    private List<User> users = new ArrayList<>();
+
+    public UsersController() {
+        users.add(new User(1, "John Doe", "email@email.com"));
+        users.add(new User(2, "Jane Doe", "email@email.com"));
+    }
+
+    @Action(value = "/users", results = {
+        @Result(name = "success", type = "json")
+    })
+    public String index() {
+        // Lógica para devolver la lista de usuarios en formato JSON
+        Gson gson = new Gson();
+        String gsonUsers = gson.toJson(users);
+
+        System.out.println(gsonUsers);
+
+        return SUCCESS;
+    }
+
+    public String create() {
+        // Lógica para crear un nuevo usuario
+        return "success";
+    }
+
+    public String show() {
+        // Lógica para mostrar un usuario específico en formato JSON
+        return "success";
+    }
+
+    public String update() {
+        // Lógica para actualizar un usuario existente
+        return "success";
+    }
+
+    public String destroy() {
+        // Lógica para eliminar un usuario existente
+        return "success";
+
+=====================================================
+== File: src/main/resources/struts.xml
+=====================================================
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+    <constant name="struts.devMode" value="true" />
+    
+    <package name="default" extends="json-default">
+        <action name="users" class="org.demo.UsersController">
+            <result type="json"/>
+        </action>
+        <action name="orders" class="org.demo.OrdersController">
+            <result type="json"/>
+        </action>
+    </package>
+</struts>
